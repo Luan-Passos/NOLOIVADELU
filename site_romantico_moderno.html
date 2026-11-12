@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b10">
+<title>Para você, meu amor, minha NOLOIVA ❤️</title>
+<style>
+:root{--pink:#ff8fb3;--soft:#ffd4e2;--bg:#100b10}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 50% 15%,#492333 0%,#21121d 38%,#0c0a0e 78%);color:#fff4f7;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+#hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;perspective:700px;z-index:0}
+.heart{position:absolute;left:var(--x);top:var(--y);font-size:var(--size);color:var(--pink);opacity:0;text-shadow:0 0 14px #ff6f9b88;animation:approach var(--duration) linear forwards;will-change:transform,opacity}
+@keyframes approach{0%{transform:translate3d(0,0,-500px) scale(.15) rotate(-15deg);opacity:0}12%{opacity:var(--opacity)}75%{opacity:var(--opacity)}100%{transform:translate3d(var(--dx),-110vh,350px) scale(2.8) rotate(28deg);opacity:0}}
+main{position:relative;z-index:1;width:min(720px,90%);margin:auto;padding:9vh 0 60px}
+.hero{min-height:83vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:#efa0b8}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(3rem,10vw,6rem);line-height:1.02;margin:22px 0;color:#ffe8ef;text-shadow:0 0 35px #f56f9a33}
+.lead{max-width:530px;color:#e7cbd4;font-size:clamp(1rem,3vw,1.18rem);line-height:1.8;margin:0 0 30px}
+button{border:1px solid #ff9fbd88;background:#f18aaa;color:#240f19;border-radius:999px;padding:14px 24px;font-weight:700;font-size:.9rem;cursor:pointer;box-shadow:0 0 28px #f18aaa35;transition:.2s}
+button:hover{transform:translateY(-2px);background:#ffc0d2}
+.note{font-size:.75rem;color:#b98d9d;margin-top:14px}
+.card{display:none;margin:0 auto;padding:clamp(24px,6vw,48px);border:1px solid #ffb2ca38;border-radius:24px;background:#1b111bc9;box-shadow:0 20px 70px #0008;backdrop-filter:blur(12px);animation:reveal .8s ease both}
+.card.show{display:block}
+@keyframes reveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.card h2{text-align:center;color:#ffb3ca;font:400 clamp(1.8rem,5vw,2.5rem) Georgia,serif;margin:0 0 26px}
+.card p{font-size:1.04rem;line-height:1.9;color:#f0dce3;margin:0 0 18px}
+.card strong{color:#ffc0d3}
+.end{text-align:center;color:#ffacc6;font:italic 1.5rem Georgia,serif;margin:30px 0 0}
+footer{text-align:center;color:#a98291;font-size:.72rem;letter-spacing:.12em;margin-top:45px}
+@media(prefers-reduced-motion:reduce){.heart{display:none}*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+<main>
+<section class="hero">
+<div class="kicker">feito especialmente para você</div>
+<h1>Você é<br>meu tudo. <span style="color:#ff8fb3">♥</span></h1>
+<p class="lead">Só queria encontrar um jeito bonito de lembrar o quanto você é importante para mim.</p>
+<button id="open" type="button">Tenho algo pra te dizer ♥</button>
+<div class="note">com amor, para a minha futura esposa</div>
+</section>
+<section class="card" id="letter">
+<h2>Meu amor,</h2>
+<p>Você é uma das partes mais importantes da minha vida. É minha alegria, minha paz, minha companheira e a pessoa com quem eu quero dividir todos os meus dias. Eu não consigo imaginar meu futuro sem você, porque é ao seu lado que quero viver meus sonhos.</p>
+<p>Eu fico imaginando o dia em que vou te ver vestida de noiva. Mal posso esperar para olhar para você, tão linda, caminhando até mim. Tenho certeza de que vou me emocionar ao perceber que chegou o momento de começar uma nova etapa da nossa história.</p>
+<p>Quero segurar sua mão, cuidar de você, rir com você e enfrentar tudo o que vier. Quero construir nosso lar, realizar nossos planos e continuar escolhendo você, todos os dias.</p>
+<p><strong>Você é tudo para mim. Obrigado por existir, por me amar e por fazer parte da minha vida. Eu te amo mais do que qualquer palavra consegue explicar.</strong></p>
+<div class="end">Mal posso esperar pelo nosso para sempre, momo. ♥</div>
+</section>
+<footer>VOCÊ & EU · NOSSA HISTÓRIA · PARA SEMPRE</footer>
+</main>
+<script>
+const layer=document.getElementById('hearts');
+const symbols=['♥','♡','❤'];
+function heart(){
+ const el=document.createElement('span');el.className='heart';
+ el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+ el.style.setProperty('--x',Math.random()*100+'vw');
+ el.style.setProperty('--y',(65+Math.random()*45)+'vh');
+ el.style.setProperty('--size',(13+Math.random()*24)+'px');
+ el.style.setProperty('--duration',(5+Math.random()*5)+'s');
+ el.style.setProperty('--opacity',(0.35+Math.random()*.5));
+ el.style.setProperty('--dx',(Math.random()*180-90)+'px');
+ layer.appendChild(el);el.addEventListener('animationend',()=>el.remove());
+}
+setInterval(heart,360);
+for(let i=0;i<14;i++)setTimeout(heart,i*180);
+document.getElementById('open').addEventListener('click',()=>{
+ const card=document.getElementById('letter');card.classList.add('show');
+ document.getElementById('open').textContent='Eu te amo ♥';
+ document.getElementById('open').disabled=true;
+ card.scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
